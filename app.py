@@ -1,24 +1,25 @@
-from flask import Flask, request, render_template
-import csv
+from flask import Flask, request, jsonify
+from transformers import GPT2LMHeadModel, GPT2Tokenizer
+import torch
 
 app = Flask(__name__)
 
-@app.route('/')
-def form():
-    return render_template('form.html')
+# Load pre-trained model and tokenizer
+model_name = "gpt2"
+tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+model = GPT2LMHeadModel.from_pretrained(model_name)
 
-@app.route('/submit', methods=['POST'])
-def submit():
-    name = request.form['name']
-    email = request.form['email']
-    message = request.form['message']
-
-    # Store the data (here, we'll store it in a CSV file)
-    with open('data.csv', 'a', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow([name, email, message])
-
-    return 'Data submitted successfully!'
+@app.route('/chat', methods=['POST'])
+def chat():
+    data = request.json
+    user_message = data['message']
+    
+    # Tokenize input and generate response
+    inputs = tokenizer.encode(user_message, return_tensors='pt')
+    outputs = model.generate(inputs, max_length=100, num_return_sequences=1, pad_token_id=tokenizer.eos_token_id)
+    response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    
+    return jsonify({'response': response})
 
 if __name__ == '__main__':
     app.run(debug=True)
