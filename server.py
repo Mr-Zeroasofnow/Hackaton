@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify
 import json
 import random
 import re
@@ -39,11 +39,7 @@ def chat():
 
 @app.route('/')
 def index():
-    return send_from_directory('.', 'index.html')
-
-@app.route('/<path:filename>')
-def serve_static(filename):
-    return send_from_directory('.', filename)
+    return app.send_static_file('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
