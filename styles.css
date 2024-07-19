@@ -110,3 +110,10 @@ body {
   border-radius: 10px;
   cursor: pointer;
 }
+.chat-widget.minimized{
+  height: 50px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
