@@ -117,3 +117,6 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+.chat-body, .chat-footer {
+  display: none;
+}
