@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="chat-widget-minimized" id="chatMinimized" onclick="toggleChat()">
+        Chat
+    </div>
     <div class="chat-widget" id="chatWidget">
         <div class="chat-header">
             <span>Chatbot</span>
-            <button onclick="toggleChat()">Show in Full Screen</button>
+            <button onclick="toggleChat()">Minimize</button>
         </div>
         <div class="chat-body" id="chatBody">
             <div class="messages" id="messages"></div>
