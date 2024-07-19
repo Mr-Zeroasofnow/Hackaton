@@ -1,50 +1,50 @@
-document.getElementById('open-chatbot').addEventListener('click', () => {
-  document.getElementById('chat-container').classList.add('active');
-  document.getElementById('open-chatbot').style.display = 'none';
-});
+document.addEventListener('DOMContentLoaded', function() {
+  const chatWidget = document.getElementById('chatWidget');
+  const chatBody = document.getElementById('chatBody');
+  const messages = document.getElementById('messages');
+  const userInput = document.getElementById('userInput');
 
-document.getElementById('send-button').addEventListener('click', async () => {
-  const userInput = document.getElementById('user-input').value;
-  if (!userInput) return;
+  function sendMessage() {
+      const userMessage = userInput.value.trim();
+      if (userMessage === "") return;
 
-  appendMessage(userInput, 'user-message');
-  document.getElementById('user-input').value = '';
+      displayMessage(userMessage, 'user');
+      userInput.value = '';
 
-  const botResponse = await getBotResponse(userInput);
-  appendMessage(botResponse, 'bot-message');
-});
-
-async function getBotResponse(userInput) {
-  try {
-    const response = await fetch('/chat', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ user_input: userInput })
-    });
-    const data = await response.json();
-    return data.response;
-  } catch (error) {
-    console.error('Error:', error);
-    return 'Sorry, something went wrong. Please try again later.';
+      fetch('/chat', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ user_input: userMessage }),
+      })
+      .then(response => response.json())
+      .then(data => {
+          const botMessage = data.response;
+          displayMessage(botMessage, 'bot');
+      })
+      .catch((error) => {
+          console.error('Error:', error);
+      });
   }
-}
 
-function appendMessage(text, className) {
-  const messageElement = document.createElement('div');
-  messageElement.className = `message ${className}`;
-  messageElement.textContent = text;
-  document.getElementById('chat-window').appendChild(messageElement);
-}
-
-document.getElementById('fullscreen-toggle').addEventListener('click', () => {
-  const chatContainer = document.getElementById('chat-container');
-  if (chatContainer.classList.contains('fullscreen')) {
-    chatContainer.classList.remove('fullscreen');
-    document.getElementById('fullscreen-toggle').textContent = 'Expand';
-  } else {
-    chatContainer.classList.add('fullscreen');
-    document.getElementById('fullscreen-toggle').textContent = 'Collapse';
+  function displayMessage(message, sender) {
+      const messageElement = document.createElement('div');
+      messageElement.className = `message ${sender}`;
+      messageElement.textContent = message;
+      messages.appendChild(messageElement);
+      chatBody.scrollTop = chatBody.scrollHeight;
   }
+
+  window.sendMessage = sendMessage;
+
+  window.checkEnter = function(event) {
+      if (event.key === "Enter") {
+          sendMessage();
+      }
+  };
+
+  window.toggleChat = function() {
+      chatWidget.classList.toggle('fullscreen');
+  };
 });
