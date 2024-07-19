@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const chatBody = document.getElementById('chatBody');
   const messages = document.getElementById('messages');
   const userInput = document.getElementById('userInput');
+  const toggleIcon = document.getElementById('toggle-icon');
 
   function sendMessage() {
       const userMessage = userInput.value.trim();
@@ -49,8 +50,17 @@ document.addEventListener('DOMContentLoaded', function() {
       if (chatWidget.style.display === 'none' || chatWidget.style.display === '') {
           chatWidget.style.display = 'flex';
           chatMinimized.style.display = 'none';
+          toggleIcon.className = 'fas fa-compress';
+      } else if (chatWidget.classList.contains('minimized')) {
+          chatWidget.classList.remove('minimized');
+          chatWidget.style.height = '400px';
+          chatWidget.style.width = '300px';
+          toggleIcon.className = 'fas fa-compress';
       } else {
-          chatWidget.style.display = 'none';
+          chatWidget.classList.add('minimized');
+          chatWidget.style.height = '50px';
+          chatWidget.style.width = '300px';
+          toggleIcon.className = 'fas fa-expand';
           chatMinimized.style.display = 'flex';
       }
   };
