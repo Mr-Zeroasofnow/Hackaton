@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   const chatWidget = document.getElementById('chatWidget');
+  const chatMinimized = document.getElementById('chatMinimized');
   const chatBody = document.getElementById('chatBody');
   const messages = document.getElementById('messages');
   const userInput = document.getElementById('userInput');
@@ -45,6 +46,12 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   window.toggleChat = function() {
-      chatWidget.classList.toggle('fullscreen');
+      if (chatWidget.style.display === 'none' || chatWidget.style.display === '') {
+          chatWidget.style.display = 'flex';
+          chatMinimized.style.display = 'none';
+      } else {
+          chatWidget.style.display = 'none';
+          chatMinimized.style.display = 'flex';
+      }
   };
 });
