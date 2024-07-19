@@ -1,31 +1,104 @@
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
 }
 
-#chat-container {
-    width: 300px;
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.open-chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
 }
 
-#chat-box {
-    height: 400px;
-    overflow-y: scroll;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
+.chat-container {
+  width: 350px;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  transform: scale(0);
+  transform-origin: bottom right;
+  z-index: 999;
 }
 
-#chat-box div {
-    margin: 5px 0;
+.chat-window {
+  padding: 10px;
+  height: 90%;
+  overflow-y: auto;
+  border-bottom: 1px solid #ddd;
 }
 
-#user-input {
-    width: calc(100% - 60px);
-    padding: 5px;
+.input-container {
+  display: flex;
 }
 
-#send-button {
-    padding: 5px 10px;
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.user-message {
+  text-align: right;
+}
+
+.bot-message {
+  text-align: left;
+}
+
+.fullscreen-toggle {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  bottom: 0;
+  right: 0;
+  border-radius: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.chat-container.active {
+  transform: scale(1);
 }
