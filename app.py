@@ -12,12 +12,16 @@ model = GPT2LMHeadModel.from_pretrained(model_name)
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.json
-    user_message = data['message']
+    user_message = data['message'].strip().lower()
     
-    # Tokenize input and generate response
-    inputs = tokenizer.encode(user_message, return_tensors='pt')
-    outputs = model.generate(inputs, max_length=100, num_return_sequences=1, pad_token_id=tokenizer.eos_token_id)
-    response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    # Custom response for specific user input
+    if user_message == "hi":
+        response = "hi, how are you sir ?"
+    else:
+        # Tokenize input and generate response
+        inputs = tokenizer.encode(user_message, return_tensors='pt')
+        outputs = model.generate(inputs, max_length=100, num_return_sequences=1, pad_token_id=tokenizer.eos_token_id)
+        response = tokenizer.decode(outputs[0], skip_special_tokens=True)
     
     return jsonify({'response': response})
 
