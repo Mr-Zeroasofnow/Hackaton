@@ -6,15 +6,20 @@ function toggleChat() {
     if (chatWidget.style.display === 'none' || chatWidget.style.display === '') {
       chatWidget.style.display = 'flex';
       chatMinimized.style.display = 'none';
-    } else {
+    } else if (!chatWidget.classList.contains('fullscreen')) {
       chatWidget.style.display = 'none';
       chatMinimized.style.display = 'flex';
-    }
-  
-    if (chatWidget.classList.contains('fullscreen')) {
-      chatWidget.classList.remove('fullscreen');
-      toggleIcon.classList.remove('fa-compress');
-      toggleIcon.classList.add('fa-expand');
+    } else {
+      // Toggle fullscreen mode
+      if (chatWidget.classList.contains('fullscreen')) {
+        chatWidget.classList.remove('fullscreen');
+        toggleIcon.classList.remove('fa-compress');
+        toggleIcon.classList.add('fa-expand');
+      } else {
+        chatWidget.classList.add('fullscreen');
+        toggleIcon.classList.remove('fa-expand');
+        toggleIcon.classList.add('fa-compress');
+      }
     }
   }
   
