@@ -1,154 +1,144 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Registration Page</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-	<style>
-		body {
-			font-family: 'Open Sans', sans-serif;
-			background-color: #f9f9f9;
-		}
-		
-		.registration-form {
-			max-width: 400px;
-			margin: 50px auto;
-			padding: 30px;
-			background-color: #fff;
-			border: 1px solid #ddd;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-		}
-		
-		.form-group {
-			margin-bottom: 20px;
-		}
-		
-		.form-control {
-			width: 100%;
-			padding: 10px;
-			font-size: 16px;
-			border: 1px solid #ccc;
-		}
-		
-		.form-control:focus {
-			border-color: #aaa;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-		}
-		
-		.checkbox {
-			margin-top: 10px;
-		}
-		
-		.checkbox label {
-			font-size: 14px;
-			color: #666;
-		}
-		
-		.checkbox input[type="checkbox"] {
-			margin-right: 10px;
-		}
-		
-		.btn {
-			background-color: #4CAF50;
-			color: #fff;
-			padding: 10px 20px;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-		}
-		
-		.btn:hover {
-			background-color: #3e8e41;
-		}
-	</style>
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f9f9f9;
+        }
+        
+        .registration-form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+        
+        .form-control:focus {
+            border-color: #aaa;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .checkbox {
+            margin-top: 10px;
+        }
+        
+        .checkbox label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .checkbox input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        
+        .btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
 </head>
 <body style="background-color: black;">
-	<div class="registration-form">
-		<h2>Registration Form</h2>
-		<form method="post" action="users.php">
-			<div class="form-group">
-				<label for="name">Name:</label>
-				<input type="text" id="name" class="form-control" required>
-			</div>
-			<div class="form-group">
-				<label for="gmail">Gmail:</label>
-				<input type="email" id="gmail" class="form-control" required>
-			</div>
-			<div class="form-group">
-				<label for="password">Password:</label>
-				<input type="password" id="password" class="form-control" required>
-			</div>
-			<div class="form-group">
-				<label for="confirm-password">Confirm Password:</label>
-				<input type="password" id="confirm-password" class="form-control" required>
-			</div>
-			<div class="form-group">
-				<label for="date-of-birth">Date of Birth:</label>
-				<input type="date" id="date-of-birth" class="form-control" required>
-			</div>
-			<div class="checkbox">
-				<input type="checkbox" id="terms-and-conditions" required>
-				<label for="terms-and-conditions" required>I agree to the terms and conditions</label>
-			</div>
-			<button class="btn" type="submit">Register</button>
-		</form>
-	</div>
-	<script>
-		// Get the input fields
-const nameInput = document.getElementById('name');
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
-const confirmPasswordInput = document.getElementById('confirmPassword');
-const termsCheckbox = document.getElementById('terms');
+    <div class="registration-form">
+        <h2>Registration Form</h2>
+        <form id="registrationForm" method="post" action="users.php">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="date-of-birth">Date of Birth:</label>
+                <input type="date" id="date-of-birth" name="date_of_birth" class="form-control" required>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" id="terms-and-conditions" required>
+                <label for="terms-and-conditions">I agree to the terms and conditions</label>
+            </div>
+            <button class="btn" type="submit">Register</button>
+        </form>
+    </div>
+    <script>
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const termsCheckbox = document.getElementById('terms-and-conditions');
 
-// Add event listener to the form submission
-document.getElementById('registrationForm').addEventListener('submit', (e) => {
-  e.preventDefault();
+        document.getElementById('registrationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
 
-  // Initialize error messages
-  let errors = {};
+            let errors = {};
 
-  // Validate name
-  if (nameInput.value.trim() === '') {
-    errors.name = 'Please enter your name';
-  } else if (nameInput.value.length < 3) {
-    errors.name = 'Name must be at least 3 characters';
-  }
+            if (nameInput.value.trim() === '') {
+                errors.name = 'Please enter your name';
+            } else if (nameInput.value.length < 3) {
+                errors.name = 'Name must be at least 3 characters';
+            }
 
-  // Validate email
-  if (emailInput.value.trim() === '') {
-    errors.email = 'Please enter your email address';
-  } else if (!emailInput.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
-    errors.email = 'Invalid email address';
-  }
+            if (emailInput.value.trim() === '') {
+                errors.email = 'Please enter your email address';
+            } else if (!emailInput.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+                errors.email = 'Invalid email address';
+            }
 
-  // Validate password
-  if (passwordInput.value.trim() === '') {
-    errors.password = 'Please enter a password';
-  } else if (passwordInput.value.length < 8) {
-    errors.password = 'Password must be at least 8 characters';
-  }
+            if (passwordInput.value.trim() === '') {
+                errors.password = 'Please enter a password';
+            } else if (passwordInput.value.length < 8) {
+                errors.password = 'Password must be at least 8 characters';
+            }
 
-  // Validate confirm password
-  if (confirmPasswordInput.value.trim() === '') {
-    errors.confirmPassword = 'Please confirm your password';
-  } else if (confirmPasswordInput.value !== passwordInput.value) {
-    errors.confirmPassword = 'Passwords do not match';
-  }
+            if (confirmPasswordInput.value.trim() === '') {
+                errors.confirmPassword = 'Please confirm your password';
+            } else if (confirmPasswordInput.value !== passwordInput.value) {
+                errors.confirmPassword = 'Passwords do not match';
+            }
 
-  // Validate terms and conditions
-  if (!termsCheckbox.checked) {
-    errors.terms = 'Please agree to the terms and conditions';
-  }
+            if (!termsCheckbox.checked) {
+                errors.terms = 'Please agree to the terms and conditions';
+            }
 
-  // Display error messages
-  if (Object.keys(errors).length > 0) {
-    const errorMessage = Object.values(errors).join('<br>');
-    document.getElementById('error-message').innerHTML = errorMessage;
-  } else {
-    // Form is valid, submit the form
-    document.getElementById('registrationForm').submit();
-  }
-});
-	</script>
+            if (Object.keys(errors).length > 0) {
+                const errorMessage = Object.values(errors).join('<br>');
+                alert(errorMessage);
+            } else {
+                document.getElementById('registrationForm').submit();
+            }
+        });
+    </script>
 </body>
 </html>
