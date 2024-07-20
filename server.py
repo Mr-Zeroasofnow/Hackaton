@@ -49,7 +49,7 @@ def chat():
 
 @app.route('/')
 def index():
-    return send_from_directory('.', 'index.html')
+    return send_from_directory('.', 'chatbot.html')
 
 @app.route('/<path:filename>')
 def serve_static(filename):
