@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="chat-widget-minimized" id="chatMinimized" onclick="toggleChat()">
-        Chat
+        💬
     </div>
     <div class="chat-widget" id="chatWidget">
         <div class="chat-header">
@@ -17,7 +17,16 @@
             <button class="toggle-button" onclick="toggleChat()"><i id="toggle-icon" class="fas fa-expand"></i></button>
         </div>
         <div class="chat-body" id="chatBody">
-            <div class="messages" id="messages"></div>
+            <div class="messages" id="messages">
+                <div class="message bot">Hello there! 👋 It's nice to meet you! What brings you here today?</div>
+                <div class="message bot">
+                    Please use the navigation below or ask me anything about the ChatBot product. 🪄
+                    <button class="option-button">🔨 Build AI chatbot</button>
+                    <button class="option-button">Using ChatBot 👉</button>
+                    <button class="option-button">I have questions 😊</button>
+                    <button class="option-button">Just browsing 👀</button>
+                </div>
+            </div>
         </div>
         <div class="chat-footer">
             <input type="text" id="userInput" placeholder="Type a message..." onkeydown="checkEnter(event)">
