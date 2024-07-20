@@ -1,71 +1,73 @@
-document.addEventListener('DOMContentLoaded', function() {
+function toggleChat() {
     const chatWidget = document.getElementById('chatWidget');
     const chatMinimized = document.getElementById('chatMinimized');
-    const chatBody = document.getElementById('chatBody');
-    const messages = document.getElementById('messages');
-    const userInput = document.getElementById('userInput');
     const toggleIcon = document.getElementById('toggle-icon');
-
-    function sendMessage() {
-        const userMessage = userInput.value.trim();
-        if (userMessage === "") return;
-
-        displayMessage(userMessage, 'user');
-        userInput.value = '';
-
-        fetch('/chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ user_input: userMessage }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            const botMessage = data.response;
-            displayMessage(botMessage, 'bot');
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+  
+    if (chatWidget.style.display === 'none' || chatWidget.style.display === '') {
+      chatWidget.style.display = 'flex';
+      chatMinimized.style.display = 'none';
+    } else {
+      chatWidget.style.display = 'none';
+      chatMinimized.style.display = 'flex';
     }
-
-    function displayMessage(message, sender) {
-        const messageElement = document.createElement('div');
-        messageElement.className = `message ${sender}`;
-        messageElement.textContent = message;
-        messages.appendChild(messageElement);
-        chatBody.scrollTop = chatBody.scrollHeight;
+  
+    if (chatWidget.classList.contains('fullscreen')) {
+      chatWidget.classList.remove('fullscreen');
+      toggleIcon.classList.remove('fa-compress');
+      toggleIcon.classList.add('fa-expand');
     }
-
-    window.sendMessage = sendMessage;
-
-    window.checkEnter = function(event) {
-        if (event.key === "Enter") {
-            sendMessage();
-        }
+  }
+  
+  function sendMessage() {
+    const userInput = document.getElementById('userInput').value.trim();
+    if (userInput === '') return;
+  
+    appendMessage(userInput, 'user');
+  
+    document.getElementById('userInput').value = '';
+  
+    // Simulate bot response
+    setTimeout(() => {
+      const botResponse = getBotResponse(userInput);
+      appendMessage(botResponse, 'bot');
+    }, 500);
+  }
+  
+  function checkEnter(event) {
+    if (event.key === 'Enter') {
+      sendMessage();
+    }
+  }
+  
+  function appendMessage(text, type) {
+    const messagesDiv = document.getElementById('messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${type}`;
+    messageDiv.textContent = text;
+    messagesDiv.appendChild(messageDiv);
+  
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+  
+  function getBotResponse(input) {
+    const responses = {
+      "🔨 Build AI chatbot": "Here is information on building an AI chatbot...",
+      "Using ChatBot 👉": "Learn how to use the ChatBot with these steps...",
+      "I have questions 😊": "Feel free to ask any questions you have!",
+      "Just browsing 👀": "No worries! Feel free to browse around."
     };
-
-    window.toggleChat = function() {
-        if (chatWidget.style.display === 'none' || chatWidget.style.display === '') {
-            chatWidget.style.display = 'flex';
-            chatMinimized.style.display = 'none';
-            toggleIcon.className = 'fas fa-compress';
-        } else if (chatWidget.classList.contains('minimized')) {
-            chatWidget.classList.remove('minimized');
-            chatWidget.style.height = '400px';
-            chatWidget.style.width = '300px';
-            toggleIcon.className = 'fas fa-compress';
-        } else if (chatWidget.classList.contains('fullscreen')) {
-            chatWidget.classList.remove('fullscreen');
-            chatWidget.style.height = '400px';
-            chatWidget.style.width = '300px';
-            toggleIcon.className = 'fas fa-expand';
-        } else {
-            chatWidget.classList.add('fullscreen');
-            chatWidget.style.height = '100%';
-            chatWidget.style.width = '100%';
-            toggleIcon.className = 'fas fa-compress';
-        }
-    };
-});
+  
+    return responses[input] || "Sorry, I did not understand that option.";
+  }
+  
+  document.querySelectorAll('.option-button').forEach(button => {
+    button.addEventListener('click', (event) => {
+      const option = event.target.textContent.trim();
+      appendMessage(option, 'user');
+      const botResponse = getBotResponse(option);
+      setTimeout(() => {
+        appendMessage(botResponse, 'bot');
+      }, 500);
+    });
+  });
+  
