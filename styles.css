@@ -67,13 +67,14 @@ body {
 .chat-body {
   flex: 1;
   padding: 10px;
-  overflow-y: auto;
+  overflow-y: auto; /* Enables vertical scrolling */
   background: #f9f9f9;
 }
 
 .messages {
   display: flex;
   flex-direction: column;
+  height: 100%; /* Ensure it takes up the available height */
 }
 
 .message {
@@ -133,16 +134,4 @@ body {
 
 .option-button:hover {
   background-color: #0056b3;
-}
-.chat-body {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-  background: #f9f9f9;
-}
-
-.messages {
-  display: flex;
-  flex-direction: column;
-  max-height: calc(100% - 50px); /* Adjust based on header/footer height */
 }
