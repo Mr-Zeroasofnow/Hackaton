@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify, send_from_directory
 import json
 import os
 import random
-import re
 from fuzzywuzzy import process
 
 app = Flask(__name__)
@@ -24,12 +23,15 @@ def get_intent(user_input):
     Match user input with the patterns in intents and return the corresponding tag using fuzzy matching.
     """
     user_input = user_input.lower()
-    intent_tags = [intent['tag'] for intent in intents.get('intents', [])]
     patterns = [pattern.lower() for intent in intents.get('intents', []) for pattern in intent.get('patterns', [])]
-
+    
     # Use fuzzy matching to find the closest pattern
     best_match, score = process.extractOne(user_input, patterns)
     
+    # Debugging print statements
+    print(f"User input: {user_input}")
+    print(f"Best match: {best_match} with score: {score}")
+
     # If the best match score is above a certain threshold (e.g., 80), return the corresponding intent
     if score >= 80:
         for intent in intents.get('intents', []):
