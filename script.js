@@ -1,25 +1,28 @@
 function toggleChat() {
     const chatWidget = document.getElementById('chatWidget');
     const chatMinimized = document.getElementById('chatMinimized');
-    const toggleIcon = document.getElementById('toggle-icon');
   
     if (chatWidget.style.display === 'none' || chatWidget.style.display === '') {
       chatWidget.style.display = 'flex';
       chatMinimized.style.display = 'none';
-    } else if (!chatWidget.classList.contains('fullscreen')) {
+    } else {
       chatWidget.style.display = 'none';
       chatMinimized.style.display = 'flex';
+    }
+  }
+  
+  function toggleFullscreen() {
+    const chatWidget = document.getElementById('chatWidget');
+    const toggleIcon = document.getElementById('toggle-icon');
+  
+    if (chatWidget.classList.contains('fullscreen')) {
+      chatWidget.classList.remove('fullscreen');
+      toggleIcon.classList.remove('fa-compress');
+      toggleIcon.classList.add('fa-expand');
     } else {
-      // Toggle fullscreen mode
-      if (chatWidget.classList.contains('fullscreen')) {
-        chatWidget.classList.remove('fullscreen');
-        toggleIcon.classList.remove('fa-compress');
-        toggleIcon.classList.add('fa-expand');
-      } else {
-        chatWidget.classList.add('fullscreen');
-        toggleIcon.classList.remove('fa-expand');
-        toggleIcon.classList.add('fa-compress');
-      }
+      chatWidget.classList.add('fullscreen');
+      toggleIcon.classList.remove('fa-expand');
+      toggleIcon.classList.add('fa-compress');
     }
   }
   
