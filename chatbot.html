@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="chat-widget-minimized" id="chatMinimized" onclick="toggleChat()">
+        💬
+    </div>
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <span>Chatbot</span>
+            <button class="toggle-button" onclick="toggleFullscreen()"><i id="toggle-icon" class="fas fa-expand"></i></button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="messages" id="messages">
+                <div class="message bot">Hello there! 👋 It's nice to meet you! What brings you here today?</div>
+                <div class="message bot">
+                    Please use the navigation below or ask me anything about the ChatBot product. 🪄
+                    <button class="option-button">🔨 Build AI chatbot</button>
+                    <button class="option-button">Using ChatBot 👉</button>
+                    <button class="option-button">I have questions 😊</button>
+                    <button class="option-button">Just browsing 👀</button>
+                </div>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="Type a message..." onkeydown="checkEnter(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

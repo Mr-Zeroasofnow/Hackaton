@@ -1,0 +1,191 @@
+{
+    "intents": [
+      {
+        "tag": "greeting",
+        "patterns": ["Hi there", "How are you", "Is anyone there?", "Hey", "Hola", "Hello", "Good day"],
+        "responses": ["Hello, thanks for asking", "Good to see you again", "Hi there, how can I help?"],
+        "context": [""]
+      },
+      {
+        "tag": "goodbye",
+        "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
+        "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."],
+        "context": [""]
+      },
+      {
+        "tag": "thanks",
+        "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+        "responses": ["Happy to help!", "Any time!", "My pleasure"],
+        "context": [""]
+      },
+      {
+        "tag": "noanswer",
+        "patterns": [],
+        "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"],
+        "context": [""]
+      },
+      {
+        "tag": "options",
+        "patterns": ["How you could help me?", "What you can do?", "What help you provide?", "How you can be helpful?", "What support is offered"],
+        "responses": ["I can guide you through Adverse drug reaction list, Blood pressure tracking, Hospitals and Pharmacies", "Offering support for Adverse drug reaction, Blood pressure, Hospitals and Pharmacies"],
+        "context": [""]
+      },
+      {
+        "tag": "adverse_drug",
+        "patterns": ["How to check Adverse drug reaction?", "Open adverse drugs module", "Give me a list of drugs causing adverse behavior", "List all drugs suitable for patient with adverse reaction", "Which drugs don't have adverse reaction?"],
+        "responses": ["Navigating to Adverse drug reaction module"],
+        "context": [""]
+      },
+      {
+        "tag": "blood_pressure",
+        "patterns": ["Open blood pressure module", "Task related to blood pressure", "Blood pressure data entry", "I want to log blood pressure results", "Blood pressure data management"],
+        "responses": ["Navigating to Blood Pressure module"],
+        "context": [""]
+      },
+      {
+        "tag": "blood_pressure_search",
+        "patterns": ["I want to search for blood pressure result history", "Blood pressure for patient", "Load patient blood pressure result", "Show blood pressure results for patient", "Find blood pressure results by ID"],
+        "responses": ["Please provide Patient ID", "Patient ID?"],
+        "context": ["search_blood_pressure_by_patient_id"]
+      },
+      {
+        "tag": "search_blood_pressure_by_patient_id",
+        "patterns": [],
+        "responses": ["Loading Blood pressure result for Patient"],
+        "context": [""]
+      },
+      {
+        "tag": "pharmacy_search",
+        "patterns": ["Find me a pharmacy", "Find pharmacy", "List of pharmacies nearby", "Locate pharmacy", "Search pharmacy"],
+        "responses": ["Please provide pharmacy name"],
+        "context": ["search_pharmacy_by_name"]
+      },
+      {
+        "tag": "search_pharmacy_by_name",
+        "patterns": [],
+        "responses": ["Loading pharmacy details"],
+        "context": [""]
+      },
+      {
+        "tag": "hospital_search",
+        "patterns": ["Lookup for hospital", "Searching for hospital to transfer patient", "I want to search hospital data", "Hospital lookup for patient", "Looking up hospital details"],
+        "responses": ["Please provide hospital name or location"],
+        "context": ["search_hospital_by_params"]
+      },
+      {
+        "tag": "search_hospital_by_params",
+        "patterns": [],
+        "responses": ["Please provide hospital type"],
+        "context": ["search_hospital_by_type"]
+      },
+      {
+        "tag": "search_hospital_by_type",
+        "patterns": [],
+        "responses": ["Loading hospital details"],
+        "context": [""]
+      },
+      {
+        "tag": "technology",
+        "patterns": ["Tell me about the latest technology", "What is AI?", "Explain blockchain", "What is machine learning?", "Describe quantum computing"],
+        "responses": ["The latest technology includes AI, blockchain, machine learning, quantum computing, and more.", "AI stands for Artificial Intelligence, which is the simulation of human intelligence in machines.", "Blockchain is a decentralized digital ledger used to record transactions across many computers.", "Machine learning is a subset of AI that involves training algorithms to learn from and make predictions on data.", "Quantum computing uses quantum-mechanical phenomena to perform computation."],
+        "context": [""]
+      },
+      {
+        "tag": "wishing",
+        "patterns": ["Happy Birthday", "Merry Christmas", "Happy New Year", "Happy holidays", "Congratulations"],
+        "responses": [
+          "Happy Birthday! 🎉",
+          "Merry Christmas! 🎄",
+          "Happy New Year! 🎆",
+          "Happy holidays! ❄️",
+          "Congratulations! 🎊"
+        ],
+        "context": [""]
+      },
+      {
+        "tag": "programming",
+        "patterns": ["What is Python?", "Explain Java", "Tell me about JavaScript", "What is C++?", "What is HTML?"],
+        "responses": ["Python is a high-level, interpreted programming language known for its readability.", "Java is a class-based, object-oriented programming language designed to have as few implementation dependencies as possible.", "JavaScript is a versatile language commonly used for web development.", "C++ is an extension of C, known for its performance and efficiency.", "HTML stands for HyperText Markup Language, which is used to create web pages."],
+        "context": [""]
+      },
+      {
+        "tag": "database",
+        "patterns": ["What is a database?", "Explain SQL", "What is NoSQL?", "Tell me about MongoDB", "What is a relational database?"],
+        "responses": ["A database is an organized collection of data, generally stored and accessed electronically.", "SQL stands for Structured Query Language, used for managing and manipulating relational databases.", "NoSQL refers to a variety of database technologies that were developed to handle large volumes of data, complex queries, and frequent updates.", "MongoDB is a popular NoSQL database that uses JSON-like documents.", "A relational database is a type of database that stores and provides access to data points that are related to one another."],
+        "context": [""]
+      },
+      {
+        "tag": "web_development",
+        "patterns": ["What is a web framework?", "Explain frontend development", "What is backend development?", "Tell me about React", "What is Node.js?"],
+        "responses": ["A web framework is a software framework designed to support the development of web applications.", "Frontend development involves creating the visual and interactive aspects of a website.", "Backend development focuses on server-side logic, databases, and application programming interfaces (APIs).", "React is a JavaScript library for building user interfaces.", "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine."],
+        "context": [""]
+      },
+      {
+        "tag": "networking",
+        "patterns": ["What is a network?", "Explain TCP/IP", "What is an IP address?", "Tell me about DNS", "What is HTTP?"],
+        "responses": ["A network is a group of interconnected devices that can communicate with each other.", "TCP/IP stands for Transmission Control Protocol/Internet Protocol, which are fundamental protocols for internet communication.", "An IP address is a unique address that identifies a device on the internet or a local network.", "DNS stands for Domain Name System, which translates domain names to IP addresses.", "HTTP stands for Hypertext Transfer Protocol, which is used for transmitting web pages over the internet."],
+        "context": [""]
+      },
+      {
+        "tag": "cybersecurity",
+        "patterns": ["What is cybersecurity?", "Explain encryption", "What is a firewall?", "Tell me about phishing", "What is a VPN?"],
+        "responses": ["Cybersecurity involves protecting computer systems, networks, and data from digital attacks.", "Encryption is the process of converting data into a coded format to prevent unauthorized access.", "A firewall is a network security device that monitors and filters incoming and outgoing network traffic.", "Phishing is a type of cyber attack that involves tricking people into providing sensitive information.", "A VPN stands for Virtual Private Network, which provides a secure connection over a public network."],
+        "context": [""]
+      },
+      {
+        "tag": "machine_learning",
+        "patterns": ["What is machine learning?", "Explain supervised learning", "What is unsupervised learning?", "Tell me about neural networks", "What is deep learning?"],
+        "responses": ["Machine learning is a subset of AI that involves training algorithms to learn from and make predictions on data.", "Supervised learning involves training a model on labeled data.", "Unsupervised learning involves training a model on data without labels.", "Neural networks are computing systems inspired by the human brain's network of neurons.", "Deep learning is a subset of machine learning that uses neural networks with many layers."],
+        "context": [""]
+      },
+      {
+        "tag": "health",
+        "patterns": ["What is a healthy diet?", "Explain exercise benefits", "What is mental health?", "Tell me about sleep importance", "What is stress management?"],
+        "responses": ["A healthy diet includes a variety of fruits, vegetables, whole grains, and lean proteins.", "Exercise has numerous benefits, including improving cardiovascular health, strength, and mental well-being.", "Mental health involves emotional, psychological, and social well-being.", "Sleep is essential for overall health, affecting mood, memory, and cognitive function.", "Stress management techniques include exercise, relaxation, and time management."],
+        "context": [""]
+      },
+      {
+        "tag": "science",
+        "patterns": ["What is physics?", "Explain chemistry", "What is biology?", "Tell me about astronomy", "What is geology?"],
+        "responses": ["Physics is the study of matter, energy, and the fundamental forces of nature.", "Chemistry is the study of substances and their interactions.", "Biology is the study of living organisms and their life processes.", "Astronomy is the study of celestial objects and the universe.", "Geology is the study of the Earth's physical structure and substances."],
+        "context": [""]
+      },
+      {
+        "tag": "history",
+        "patterns": ["What is World War II?", "Explain the Renaissance", "What is the Industrial Revolution?", "Tell me about ancient Egypt", "What is the Cold War?"],
+        "responses": ["World War II was a global conflict that lasted from 1939 to 1945.", "The Renaissance was a period of cultural, artistic, and intellectual revival in Europe during the 14th to 17th centuries.", "The Industrial Revolution was a period of major industrialization during the 18th and 19th centuries.", "Ancient Egypt was a civilization in northeastern Africa, known for its pyramids and pharaohs.", "The Cold War was a period of geopolitical tension between the Soviet Union and the United States after World War II."],
+        "context": [""]
+      },
+      {
+        "tag": "math",
+        "patterns": ["What is algebra?", "Explain calculus", "What is geometry?", "Tell me about statistics", "What is trigonometry?"],
+        "responses": ["Algebra is a branch of mathematics that deals with symbols and the rules for manipulating those symbols.", "Calculus is the mathematical study of continuous change.", "Geometry is the branch of mathematics concerned with the properties and relations of points, lines, surfaces, and solids.", "Statistics is the study of data collection, analysis, interpretation, and presentation.", "Trigonometry is the branch of mathematics dealing with the relationships between the angles and sides of triangles."],
+        "context": [""]
+      },
+      {
+        "tag": "travel",
+        "patterns": ["What are popular travel destinations?", "Explain travel insurance", "What is a passport?", "Tell me about travel safety", "What is a visa?"],
+        "responses": ["Popular travel destinations include Paris, Tokyo, New York City, and Sydney.", "Travel insurance provides coverage for unexpected events during travel, such as trip cancellations and medical emergencies.", "A passport is a travel document issued by a country's government that certifies the identity and nationality of its holder.", "Travel safety tips include staying aware of your surroundings, keeping your belongings secure, and having emergency contacts.", "A visa is an endorsement on a passport indicating that the holder is allowed to enter, leave, or stay for a specified period in a country."],
+        "context": [""]
+      },
+      {
+        "tag": "finance",
+        "patterns": ["What is a budget?", "Explain investing", "What is a credit score?", "Tell me about savings accounts", "What is a mortgage?"],
+        "responses": ["A budget is a plan for managing income and expenses.", "Investing involves allocating resources, usually money, with the expectation of generating an income or profit.", "A credit score is a numerical expression based on a level analysis of a person's credit files, representing the creditworthiness of an individual.", "Savings accounts are bank accounts that earn interest on the money deposited.", "A mortgage is a loan used to purchase a home, where the property serves as collateral for the loan."],
+        "context": [""]
+      },
+      {
+        "tag": "food",
+        "patterns": ["What are popular recipes?", "Explain vegan diet", "What is gluten-free?", "Tell me about food safety", "What is a balanced diet?"],
+        "responses": ["Popular recipes include spaghetti carbonara, chicken curry, and chocolate cake.", "A vegan diet excludes all animal products, including meat, dairy, and eggs.", "Gluten-free means avoiding foods that contain gluten, a protein found in wheat, barley, and rye.", "Food safety involves practices to prevent foodborne illnesses, such as proper cooking and storage.", "A balanced diet includes a variety of foods in the right proportions to maintain health and energy levels."],
+        "context": [""]
+      },
+      {
+        "tag": "entertainment",
+        "patterns": ["What are popular movies?", "Explain streaming services", "What is a podcast?", "Tell me about video games", "What is a book club?"],
+        "responses": ["Popular movies include 'The Godfather', 'Inception', and 'The Shawshank Redemption'.", "Streaming services provide digital content, such as movies and TV shows, over the internet.", "A podcast is a digital audio or video file series available for download or streaming.", "Video games are electronic games that involve interaction with a user interface to generate visual feedback.", "A book club is a group of people who meet to discuss a book they have all read."],
+        "context": [""]
+      }
+    ]
+  }
+  
