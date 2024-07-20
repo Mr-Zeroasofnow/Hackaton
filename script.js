@@ -54,6 +54,7 @@ function toggleChat() {
     messageDiv.textContent = text;
     messagesDiv.appendChild(messageDiv);
   
+    // Automatically scroll to the bottom
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }
   
