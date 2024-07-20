@@ -65,7 +65,21 @@ function toggleChat() {
       "Just browsing 👀": "No worries! Feel free to browse around."
     };
   
-    return responses[input] || "Sorry, I did not understand that option.";
+    input = input.toLowerCase();
+  
+    if (input.includes("hello") || input.includes("hi")) {
+      return "Hello there! 👋 It's nice to meet you! What brings you here today?";
+    } else if (input.includes("build") || input.includes("ai chatbot")) {
+      return responses["🔨 Build AI chatbot"];
+    } else if (input.includes("using")) {
+      return responses["Using ChatBot 👉"];
+    } else if (input.includes("questions")) {
+      return responses["I have questions 😊"];
+    } else if (input.includes("browsing")) {
+      return responses["Just browsing 👀"];
+    } else {
+      return "Sorry, I did not understand that option.";
+    }
   }
   
   document.querySelectorAll('.option-button').forEach(button => {
