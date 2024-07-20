@@ -93,4 +93,3 @@ function toggleChat() {
       }, 500);
     });
   });
-  
