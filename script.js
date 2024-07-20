@@ -1,3 +1,4 @@
+// Function to toggle chat widget visibility
 function toggleChat() {
     const chatWidget = document.getElementById('chatWidget');
     const chatMinimized = document.getElementById('chatMinimized');
@@ -11,6 +12,7 @@ function toggleChat() {
     }
 }
 
+// Function to toggle fullscreen mode
 function toggleFullscreen() {
     const chatWidget = document.getElementById('chatWidget');
     const toggleIcon = document.getElementById('toggle-icon');
@@ -26,70 +28,47 @@ function toggleFullscreen() {
     }
 }
 
+// Function to send a message
 function sendMessage() {
-    const userInput = document.getElementById('userInput').value.trim();
-    if (userInput === '') return;
+    const userInput = document.getElementById('userInput').value;
+    if (userInput.trim() === '') return; // Ignore empty messages
 
-    appendMessage(userInput, 'user');
+    // Add user message to chat
+    const messages = document.getElementById('messages');
+    const userMessage = document.createElement('div');
+    userMessage.classList.add('message', 'user');
+    userMessage.textContent = userInput;
+    messages.appendChild(userMessage);
 
+    // Clear the input field
     document.getElementById('userInput').value = '';
 
-    // Simulate bot response
-    setTimeout(() => {
-        const botResponse = getBotResponse(userInput);
-        appendMessage(botResponse, 'bot');
-    }, 500);
+    // Simulate a response from the bot
+    fetch('/chat', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user_input: userInput }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        const botMessage = document.createElement('div');
+        botMessage.classList.add('message', 'bot');
+        botMessage.textContent = data.response;
+        messages.appendChild(botMessage);
+
+        // Scroll to the bottom
+        const chatBody = document.getElementById('chatBody');
+        chatBody.scrollTop = chatBody.scrollHeight;
+    })
+    .catch(error => console.error('Error:', error));
 }
 
+// Function to check if Enter key is pressed
 function checkEnter(event) {
     if (event.key === 'Enter') {
+        event.preventDefault(); // Prevents the default action
         sendMessage();
     }
 }
-
-function appendMessage(text, type) {
-    const messagesDiv = document.getElementById('messages');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${type}`;
-    messageDiv.textContent = text;
-    messagesDiv.appendChild(messageDiv);
-
-    // Automatically scroll to the bottom
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-}
-
-function getBotResponse(input) {
-    const responses = {
-        "🔨 Build AI chatbot": "Here is information on building an AI chatbot...",
-        "Using ChatBot 👉": "Learn how to use the ChatBot with these steps...",
-        "I have questions 😊": "Feel free to ask any questions you have!",
-        "Just browsing 👀": "No worries! Feel free to browse around."
-    };
-
-    input = input.toLowerCase();
-
-    if (input.includes("hello") || input.includes("hi")) {
-        return "Hello there! 👋 It's nice to meet you! What brings you here today?";
-    } else if (input.includes("build") || input.includes("ai chatbot")) {
-        return responses["🔨 Build AI chatbot"];
-    } else if (input.includes("using")) {
-        return responses["Using ChatBot 👉"];
-    } else if (input.includes("questions")) {
-        return responses["I have questions 😊"];
-    } else if (input.includes("browsing")) {
-        return responses["Just browsing 👀"];
-    } else {
-        return "Sorry, I did not understand that option.";
-    }
-}
-
-document.querySelectorAll('.option-button').forEach(button => {
-    button.addEventListener('click', (event) => {
-        const option = event.target.textContent.trim();
-        appendMessage(option, 'user');
-        const botResponse = getBotResponse(option);
-        setTimeout(() => {
-            appendMessage(botResponse, 'bot');
-        }, 500);
-    });
-});
