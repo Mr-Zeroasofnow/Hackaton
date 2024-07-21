@@ -1,227 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Introductory Page with Chatbot Integration</title>
-  <style>
-    /* Body Styling */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      flex-direction: column;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI ChatBot Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
 
-    /* Main Content */
-    .main-content {
-      text-align: center;
-    }
+        header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 20px 0;
+        }
 
-    .main-content h1 {
-      color: #333;
-    }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
 
-    .main-content p {
-      color: #666;
-    }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
 
-    /* Chat Widget Minimized Button */
-    .chat-widget-minimized {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 30px;
-      background: #007bff;
-      color: #fff;
-      border-radius: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
 
-    /* Chat Widget */
-    .chat-widget {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 300px;
-      height: 400px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      display: none;
-    }
+        nav a:hover {
+            text-decoration: underline;
+        }
 
-    .chat-widget.fullscreen {
-      width: 100%;
-      height: 100%;
-      bottom: 0;
-      right: 0;
-      border-radius: 0;
-    }
+        #hero {
+            background: #4a90e2;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
 
-    /* Chat Header */
-    .chat-header {
-      background: #007bff;
-      color: #fff;
-      padding: 10px;
-      border-radius: 10px 10px 0 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        #hero h2 {
+            margin: 0;
+            font-size: 3em;
+        }
 
-    .chat-header .toggle-button {
-      background: transparent;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-      font-size: 18px;
-    }
+        #hero p {
+            font-size: 1.5em;
+        }
 
-    /* Chat Body */
-    .chat-body {
-      flex: 1;
-      padding: 10px;
-      overflow-y: auto;
-      background: #f9f9f9;
-    }
+        .cta-button {
+            background-color: #fff;
+            color: #4a90e2;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-decoration: none;
+        }
 
-    .messages {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
+        .cta-button:hover {
+            background-color: #e0e0e0;
+        }
 
-    .message {
-      margin-bottom: 10px;
-    }
+        section {
+            padding: 60px 20px;
+            text-align: center;
+        }
 
-    .message.bot {
-      align-self: flex-start;
-      background: #e0e0e0;
-      padding: 10px;
-      border-radius: 10px;
-    }
+        #features .feature, #testimonials .testimonial, #pricing .pricing-plan {
+            margin-bottom: 30px;
+        }
 
-    .message.user {
-      align-self: flex-end;
-      background: #007bff;
-      color: #fff;
-      padding: 10px;
-      border-radius: 10px;
-    }
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
 
-    /* Chat Footer */
-    .chat-footer {
-      display: flex;
-      padding: 10px;
-      background: #fff;
-      border-radius: 0 0 10px 10px;
-    }
+        .feature h3, .pricing-plan h3 {
+            font-size: 2em;
+            margin-top: 0;
+        }
 
-    .chat-footer input {
-      flex: 1;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      margin-right: 10px;
-    }
+        .feature p, .pricing-plan ul {
+            font-size: 1.2em;
+        }
 
-    .chat-footer button {
-      background: #007bff;
-      color: #fff;
-      border: none;
-      padding: 10px;
-      border-radius: 10px;
-      cursor: pointer;
-    }
+        #how-it-works ol {
+            text-align: left;
+            margin: 0 auto;
+            display: inline-block;
+        }
 
-    /* Option Button */
-    .option-button {
-      display: block;
-      padding: 5px 10px;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 5px 0;
-      transition: background-color 0.3s ease;
-    }
+        #testimonials blockquote {
+            background: #fff;
+            border-left: 5px solid #4a90e2;
+            padding: 30px;
+            margin: 20px auto;
+            width: 80%;
+            font-style: italic;
+            font-size: 1.2em;
+        }
 
-    .option-button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+        #pricing {
+            background-color: #f2f2f2;
+        }
+
+        .pricing-plan {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 30px;
+            margin: 10px;
+            display: inline-block;
+            width: 30%;
+            vertical-align: top;
+        }
+
+        .pricing-plan h3 {
+            font-size: 2.2em;
+        }
+
+        .pricing-plan ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pricing-plan li {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #4a90e2;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer .social-media a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer .social-media a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <div class="main-content">
-    <h1>Welcome to Our Service</h1>
-    <p>Here you can find information about our offerings and get assistance via our chatbot.</p>
-  </div>
+    <header>
+        <div class="container">
+            <h1>AI ChatBot</h1>
+            <nav>
+                <a href="#hero">Home</a>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-  <div class="chat-widget-minimized" id="chatMinimized">
-    Chat
-  </div>
+    <section id="hero">
+        <div class="container">
+            <h2>Revolutionize Your Interactions with AI</h2>
+            <p>Our AI chatbot leverages advanced technology to provide intelligent, human-like responses and support around the clock.</p>
+            <a href="#contact" class="cta-button">Get Started Now</a>
+        </div>
+    </section>
 
-  <div class="chat-widget" id="chatWidget">
-    <div class="chat-header">
-      <span>Chatbot</span>
-      <button class="toggle-button" id="closeChat">×</button>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="messages" id="messages">
-        <!-- Messages will be appended here -->
-      </div>
-    </div>
-    <div class="chat-footer">
-      <input type="text" id="chatInput" placeholder="Type a message..." />
-      <button id="sendButton">Send</button>
-    </div>
-  </div>
+    <section id="features">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="feature">
+                <h3>Advanced Natural Language Processing</h3>
+                <p>Engage in intelligent conversations with a chatbot that understands and responds naturally.</p>
+            </div>
+            <div class="feature">
+                <h3>24/7 Customer Support</h3>
+                <p>Available around the clock to assist your users, providing instant solutions and support.</p>
+            </div>
+            <div class="feature">
+                <h3>Seamless Integration</h3>
+                <p>Integrates effortlessly with your existing systems and platforms to enhance functionality.</p>
+            </div>
+            <div class="feature">
+                <h3>Customizable Responses</h3>
+                <p>Tailor responses and interactions to fit your brand’s voice and customer needs.</p>
+            </div>
+            <div class="feature">
+                <h3>Data-Driven Insights</h3>
+                <p>Gain valuable insights into user interactions and behavior to continuously improve service.</p>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    document.getElementById('chatMinimized').addEventListener('click', function () {
-      document.getElementById('chatWidget').style.display = 'flex';
-      document.getElementById('chatMinimized').style.display = 'none';
-    });
+    <section id="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <p>Our AI chatbot is designed to be intuitive and easy to use. Here’s a step-by-step guide on how to get started:</p>
+            <ol>
+                <li>Sign up and integrate the chatbot with your platform using our easy setup guide.</li>
+                <li>Customize the chatbot’s responses and features to match your requirements.</li>
+                <li>Deploy the chatbot and start interacting with users immediately.</li>
+                <li>Monitor performance and gather feedback to refine and enhance the chatbot's capabilities.</li>
+            </ol>
+        </div>
+    </section>
 
-    document.getElementById('closeChat').addEventListener('click', function () {
-      document.getElementById('chatWidget').style.display = 'none';
-      document.getElementById('chatMinimized').style.display = 'flex';
-    });
+    <section id="testimonials">
+        <div class="container">
+            <h2>What Our Users Are Saying</h2>
+            <div class="testimonial">
+                <blockquote>
+                    <p>"The AI chatbot has transformed our customer service operations. It's like having a 24/7 support team without the cost!"</p>
+                    <footer>- Jane Doe, CEO of TechCo</footer>
+                </blockquote>
+            </div>
+            <div class="testimonial">
+                <blockquote>
+                    <p>"This chatbot has made it easier to engage with our users and provides insightful analytics to improve our strategies."</p>
+                    <footer>- John Smith, CTO of Innovate Ltd.</footer>
+                </blockquote>
+            </div>
+            <div class="testimonial">
+                <blockquote>
+                    <p>"A game-changer for our online presence. The customization options are fantastic, and the AI is incredibly intuitive."</p>
+                    <footer>- Emily Johnson, Digital Marketing Manager at Marketify</footer>
+                </blockquote>
+            </div>
+        </div>
+    </section>
 
-    document.getElementById('sendButton').addEventListener('click', function () {
-      const chatInput = document.getElementById('chatInput');
-      const message = chatInput.value.trim();
-      if (message) {
-        const userMessage = document.createElement('div');
-        userMessage.className = 'message user';
-        userMessage.textContent = message;
-        document.getElementById('messages').appendChild(userMessage);
-        chatInput.value = '';
+    <section id="pricing">
+        <div class="container">
+            <h2>Pricing Plans</h2>
+            <div class="pricing-plan">
+                <h3>Basic Plan</h3>
+                <p>$29/month</p>
+                <ul>
+                    <li>Basic features</li>
+                    <li>Limited support</li>
+                    <li>Standard integration</li>
+                </ul>
+                <a href="#contact" class="cta-button">Choose Basic</a>
+            </div>
+            <div class="pricing-plan">
+                <h3>Professional Plan</h3>
+                <p>$99/month</p>
+                <ul>
+                    <li>Advanced features</li>
+                    <li>Priority support</li>
+                    <li>Enhanced integration</li>
+                    <li>Customizable responses</li>
+                </ul>
+                <a href="#contact" class="cta-button">Choose Professional</a>
+            </div>
+            <div class="pricing-plan">
+                <h3>Enterprise Plan</h3>
+                <p>$299/month</p>
+                <ul>
+                    <li>All features included</li>
+                    <li>Dedicated support</li>
+                    <li>Fully customized integration</li>
+                    <li>Advanced analytics</li>
+                </ul>
+                <a href="#contact" class="cta-button">Choose Enterprise</a>
+            </div>
+        </div>
+    </section>
 
-        // Here you would typically send the message to your chatbot backend and receive a response.
-        // For demonstration, we'll just echo the user's message with a delay.
-        setTimeout(() => {
-          const botMessage = document.createElement('div');
-          botMessage.className = 'message bot';
-          botMessage.textContent = `Bot: ${message}`;
-          document.getElementById('messages').appendChild(botMessage);
-        }, 1000);
-      }
-    });
-  </script>
+    <section id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p>Ready to revolutionize your user interactions? Contact us to learn more or schedule a demo.</p>
+            <a href="mailto:info@aichatbot.com" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AI ChatBot. All rights reserved.</p>
+            <div class="social-media">
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
