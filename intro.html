@@ -17,15 +17,41 @@
         header {
             background: #000; /* Black background */
             color: #fff; /* White text color */
-            padding: 20px 0;
-            text-align: center;
+            padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
             margin: 0;
-            font-size: 3em;
+            font-size: 2em;
             font-weight: 700;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff; /* White text color */
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
         }
 
         .main-content {
@@ -99,7 +125,7 @@
             transform: scale(1.05);
         }
 
-        .features, .about, .contact {
+        .section {
             margin: 40px 0;
             padding: 30px;
             background: #ffffff; /* White background */
@@ -107,33 +133,15 @@
             border-radius: 10px;
         }
 
-        .features h3, .about h3, .contact h3 {
+        .section h3 {
             margin-top: 0;
             font-size: 2.5em;
             color: #000; /* Black text color */
         }
 
-        .features p, .about p, .contact p {
+        .section p {
             font-size: 1.2em;
             color: #555; /* Medium gray text color */
-        }
-
-        .feature-item {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .feature-item img {
-            width: 50px;
-            height: 50px;
-            margin-right: 20px;
-        }
-
-        .feature-item h4 {
-            margin: 0 0 10px;
-            font-size: 1.6em;
-            color: #333; /* Darker text color */
         }
 
         footer {
@@ -160,13 +168,8 @@
                 width: 100%;
             }
 
-            .feature-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .feature-item img {
-                margin-bottom: 10px;
+            .section {
+                padding: 20px;
             }
         }
     </style>
@@ -175,6 +178,15 @@
 
     <header>
         <h1>AI ChatBot</h1>
+        <nav>
+            <ul>
+                <li><a href="#safety-overview">Safety Overview</a></li>
+                <li><a href="#standards">Standards</a></li>
+                <li><a href="#system">System</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <div class="main-content">
@@ -189,37 +201,27 @@
             </div>
         </section>
 
-        <section class="features">
-            <h3>Features</h3>
-            <div class="feature-item">
-                <img src="https://via.placeholder.com/50" alt="Feature Icon">
-                <div>
-                    <h4>Real-time Responses</h4>
-                    <p>Experience instant and relevant answers to all your queries with our advanced natural language processing technology.</p>
-                </div>
-            </div>
-            <div class="feature-item">
-                <img src="https://via.placeholder.com/50" alt="Feature Icon">
-                <div>
-                    <h4>Multi-language Support</h4>
-                    <p>Communicate effortlessly in multiple languages with our multilingual AI capabilities.</p>
-                </div>
-            </div>
-            <div class="feature-item">
-                <img src="https://via.placeholder.com/50" alt="Feature Icon">
-                <div>
-                    <h4>Customizable Integration</h4>
-                    <p>Seamlessly integrate our chatbot into your existing systems and tailor it to meet your specific needs.</p>
-                </div>
-            </div>
+        <section id="safety-overview" class="section">
+            <h3>Safety Overview</h3>
+            <p>Our AI chatbot ensures the highest standards of safety and privacy. We implement rigorous security measures to protect user data and ensure compliance with international regulations. Our system is designed to safeguard sensitive information and provide a secure communication environment.</p>
         </section>
 
-        <section class="about">
+        <section id="standards" class="section">
+            <h3>Standards</h3>
+            <p>We adhere to the latest industry standards and best practices to deliver reliable and efficient AI solutions. Our technology complies with data protection laws such as GDPR and CCPA. We continually update our systems to align with evolving standards and technological advancements.</p>
+        </section>
+
+        <section id="system" class="section">
+            <h3>System</h3>
+            <p>Our chatbot system is built on a robust architecture that integrates seamlessly with various platforms. It leverages advanced machine learning algorithms to provide accurate and contextually relevant responses. The system is scalable, customizable, and designed to meet the diverse needs of businesses and individuals.</p>
+        </section>
+
+        <section id="about" class="section">
             <h3>About Us</h3>
             <p>At AI ChatBot, we are dedicated to pushing the boundaries of artificial intelligence to create smarter, more intuitive communication tools. Our team of experts is committed to delivering cutting-edge solutions that enhance user experience and drive innovation.</p>
         </section>
 
-        <section class="contact">
+        <section id="contact" class="section">
             <h3>Contact Us</h3>
             <p>If you have any questions or need assistance, please do not hesitate to reach out to us. We are here to help!</p>
             <a href="mailto:contact@aichatbot.com" class="button">Email Us</a>
