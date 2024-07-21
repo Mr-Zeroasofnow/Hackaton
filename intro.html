@@ -6,298 +6,172 @@
     <title>AI ChatBot Landing Page</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: #f4f4f4;
         }
 
         header {
-            background-color: #4a90e2;
-            color: white;
+            background: #007bff;
+            color: #fff;
             padding: 20px 0;
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
+            text-align: center;
         }
 
         header h1 {
             margin: 0;
             font-size: 2.5em;
+            letter-spacing: 1px;
         }
 
-        nav a {
-            color: white;
-            margin-left: 20px;
-            text-decoration: none;
-            font-size: 1.2em;
+        .main-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
         }
 
-        nav a:hover {
-            text-decoration: underline;
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        #hero {
-            background: #4a90e2;
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
+        .hero h2 {
+            font-size: 2.2em;
+            margin: 0 0 20px;
         }
 
-        #hero h2 {
-            margin: 0;
-            font-size: 3em;
-        }
-
-        #hero p {
-            font-size: 1.5em;
-        }
-
-        .cta-button {
-            background-color: #fff;
-            color: #4a90e2;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-size: 1.2em;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .cta-button:hover {
-            background-color: #e0e0e0;
-        }
-
-        section {
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        #features .feature, #testimonials .testimonial, #pricing .pricing-plan {
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            font-size: 2.5em;
+        .hero p {
+            font-size: 1.1em;
             margin-bottom: 20px;
         }
 
-        .feature h3, .pricing-plan h3 {
-            font-size: 2em;
+        .hero img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1em;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #0056b3;
+        }
+
+        .features, .about, .contact {
+            margin: 40px 0;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .features h3, .about h3, .contact h3 {
             margin-top: 0;
+            font-size: 1.8em;
         }
 
-        .feature p, .pricing-plan ul {
-            font-size: 1.2em;
+        .features p, .about p, .contact p {
+            font-size: 1.1em;
         }
 
-        #how-it-works ol {
-            text-align: left;
-            margin: 0 auto;
-            display: inline-block;
+        .feature-item {
+            margin-bottom: 20px;
         }
 
-        #testimonials blockquote {
-            background: #fff;
-            border-left: 5px solid #4a90e2;
-            padding: 30px;
-            margin: 20px auto;
-            width: 80%;
-            font-style: italic;
-            font-size: 1.2em;
-        }
-
-        #pricing {
-            background-color: #f2f2f2;
-        }
-
-        .pricing-plan {
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 30px;
-            margin: 10px;
-            display: inline-block;
-            width: 30%;
-            vertical-align: top;
-        }
-
-        .pricing-plan h3 {
-            font-size: 2.2em;
-        }
-
-        .pricing-plan ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .pricing-plan li {
-            font-size: 1.2em;
-            margin-bottom: 10px;
+        .feature-item h4 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
         }
 
         footer {
-            background-color: #4a90e2;
-            color: white;
-            padding: 20px 0;
+            background: #007bff;
+            color: #fff;
             text-align: center;
+            padding: 10px 0;
         }
 
-        footer .social-media a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
+        footer p {
+            margin: 0;
+            font-size: 1em;
         }
 
-        footer .social-media a:hover {
-            text-decoration: underline;
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero img {
+                margin-top: 20px;
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="container">
-            <h1>AI ChatBot</h1>
-            <nav>
-                <a href="#hero">Home</a>
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
+        <h1>AI ChatBot</h1>
     </header>
 
-    <section id="hero">
-        <div class="container">
-            <h2>Revolutionize Your Interactions with AI</h2>
-            <p>Our AI chatbot leverages advanced technology to provide intelligent, human-like responses and support around the clock.</p>
-            <a href="#contact" class="cta-button">Get Started Now</a>
-        </div>
-    </section>
+    <div class="main-content">
+        <section class="hero">
+            <div class="hero-text">
+                <h2>Revolutionize Your Conversations</h2>
+                <p>Our advanced AI chatbot provides seamless, intelligent interactions. Discover the future of communication today.</p>
+                <a href="#" class="button">Get Started</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/600x400" alt="AI ChatBot">
+            </div>
+        </section>
 
-    <section id="features">
-        <div class="container">
-            <h2>Features</h2>
-            <div class="feature">
-                <h3>Advanced Natural Language Processing</h3>
-                <p>Engage in intelligent conversations with a chatbot that understands and responds naturally.</p>
+        <section class="features">
+            <h3>Features</h3>
+            <div class="feature-item">
+                <h4>Real-time Responses</h4>
+                <p>Experience instant and relevant answers to all your queries with our advanced natural language processing technology.</p>
             </div>
-            <div class="feature">
-                <h3>24/7 Customer Support</h3>
-                <p>Available around the clock to assist your users, providing instant solutions and support.</p>
+            <div class="feature-item">
+                <h4>Multi-language Support</h4>
+                <p>Communicate effortlessly in multiple languages with our multilingual AI capabilities.</p>
             </div>
-            <div class="feature">
-                <h3>Seamless Integration</h3>
-                <p>Integrates effortlessly with your existing systems and platforms to enhance functionality.</p>
+            <div class="feature-item">
+                <h4>Customizable Integration</h4>
+                <p>Seamlessly integrate our chatbot into your existing systems and tailor it to meet your specific needs.</p>
             </div>
-            <div class="feature">
-                <h3>Customizable Responses</h3>
-                <p>Tailor responses and interactions to fit your brand’s voice and customer needs.</p>
-            </div>
-            <div class="feature">
-                <h3>Data-Driven Insights</h3>
-                <p>Gain valuable insights into user interactions and behavior to continuously improve service.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="how-it-works">
-        <div class="container">
-            <h2>How It Works</h2>
-            <p>Our AI chatbot is designed to be intuitive and easy to use. Here’s a step-by-step guide on how to get started:</p>
-            <ol>
-                <li>Sign up and integrate the chatbot with your platform using our easy setup guide.</li>
-                <li>Customize the chatbot’s responses and features to match your requirements.</li>
-                <li>Deploy the chatbot and start interacting with users immediately.</li>
-                <li>Monitor performance and gather feedback to refine and enhance the chatbot's capabilities.</li>
-            </ol>
-        </div>
-    </section>
+        <section class="about">
+            <h3>About Us</h3>
+            <p>At AI ChatBot, we are dedicated to pushing the boundaries of artificial intelligence to create smarter, more intuitive communication tools. Our team of experts is committed to delivering cutting-edge solutions that enhance user experience and drive innovation.</p>
+        </section>
 
-    <section id="testimonials">
-        <div class="container">
-            <h2>What Our Users Are Saying</h2>
-            <div class="testimonial">
-                <blockquote>
-                    <p>"The AI chatbot has transformed our customer service operations. It's like having a 24/7 support team without the cost!"</p>
-                    <footer>- Jane Doe, CEO of TechCo</footer>
-                </blockquote>
-            </div>
-            <div class="testimonial">
-                <blockquote>
-                    <p>"This chatbot has made it easier to engage with our users and provides insightful analytics to improve our strategies."</p>
-                    <footer>- John Smith, CTO of Innovate Ltd.</footer>
-                </blockquote>
-            </div>
-            <div class="testimonial">
-                <blockquote>
-                    <p>"A game-changer for our online presence. The customization options are fantastic, and the AI is incredibly intuitive."</p>
-                    <footer>- Emily Johnson, Digital Marketing Manager at Marketify</footer>
-                </blockquote>
-            </div>
-        </div>
-    </section>
-
-    <section id="pricing">
-        <div class="container">
-            <h2>Pricing Plans</h2>
-            <div class="pricing-plan">
-                <h3>Basic Plan</h3>
-                <p>$29/month</p>
-                <ul>
-                    <li>Basic features</li>
-                    <li>Limited support</li>
-                    <li>Standard integration</li>
-                </ul>
-                <a href="#contact" class="cta-button">Choose Basic</a>
-            </div>
-            <div class="pricing-plan">
-                <h3>Professional Plan</h3>
-                <p>$99/month</p>
-                <ul>
-                    <li>Advanced features</li>
-                    <li>Priority support</li>
-                    <li>Enhanced integration</li>
-                    <li>Customizable responses</li>
-                </ul>
-                <a href="#contact" class="cta-button">Choose Professional</a>
-            </div>
-            <div class="pricing-plan">
-                <h3>Enterprise Plan</h3>
-                <p>$299/month</p>
-                <ul>
-                    <li>All features included</li>
-                    <li>Dedicated support</li>
-                    <li>Fully customized integration</li>
-                    <li>Advanced analytics</li>
-                </ul>
-                <a href="#contact" class="cta-button">Choose Enterprise</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2>Get in Touch</h2>
-            <p>Ready to revolutionize your user interactions? Contact us to learn more or schedule a demo.</p>
-            <a href="mailto:info@aichatbot.com" class="cta-button">Contact Us</a>
-        </div>
-    </section>
+        <section class="contact">
+            <h3>Contact Us</h3>
+            <p>If you have any questions or need assistance, please do not hesitate to reach out to us. We are here to help!</p>
+            <a href="mailto:contact@aichatbot.com" class="button">Email Us</a>
+        </section>
+    </div>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 AI ChatBot. All rights reserved.</p>
-            <div class="social-media">
-                <a href="#">Facebook</a>
-                <a href="#">Twitter</a>
-                <a href="#">LinkedIn</a>
-            </div>
-        </div>
+        <p>&copy; 2024 AI ChatBot. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
